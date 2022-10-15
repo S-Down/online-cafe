@@ -76,6 +76,7 @@ const Index = ({
 
 export const getServerSideProps = async () => {
   let url = process.env.NODE_ENV === 'development' ? process.env.BASE_URL : ''
+  console.log('url: ', url)
   const productList = await axios.get(`${url}/api/products`)
   return {
     props: {
