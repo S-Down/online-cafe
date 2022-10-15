@@ -1,0 +1,107 @@
+.container {
+  width:100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e0ebee;
+}
+
+.tabBar {
+  width: 80%;
+  height: auto;
+  padding: 10px 0 2px 0;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-top: 40px;
+  border-radius: 50px;
+  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.15), -6px -6px 20px rgb(255, 255, 255);
+  transition: all ease 0.5s;
+}
+
+.tabBar:hover {
+  transform: translateY(3px);
+  box-shadow: inset 6px 6px 10px rgba(0, 0, 0, 0.1), inset -6px -6px 10px rgba(255, 255, 255, 0.5), 6px 6px 20px rgba(0, 0, 0, 0.15), -6px -6px 20px rgb(255, 255, 255);
+}
+
+.tab {
+  width: 15%;
+  align-self: center;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.tabText {
+  color: #777;
+  transition: all ease 0.5s;
+}
+
+.tabIndicator {
+  width: 80%;
+  height: 5px;
+  background-color: #0da1a0;
+  border-radius: 5px;
+  box-shadow: inset 3px 3px 4px rgba(0, 0, 0, 0.25), inset -3px -3px 4px rgba(255, 255, 255, 0.5);
+  margin: 8px 0;
+  opacity: 0;
+  transition: all ease 0.5s;
+}
+
+.tab[active="true"] .tabText {
+  color: #0da1a0;
+}
+
+.tab[active="true"] .tabIndicator {
+  opacity: 1;
+}
+
+.tabPage {
+  width: 100%;
+  height: 90%;
+  margin: 20px 0px;
+  display: flex;
+  justify-content: space-around;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .tabBar {
+    height: 90%;
+    width: 50px;
+    flex-direction: column;
+    padding: 0 10px 0 2px;
+    margin: 0 15px;
+  }
+
+  .tab {
+    width: 100%;
+    height: 15%;
+    flex-direction: row;
+  }
+
+  .tabText {
+    width: 90%;
+    font-size: 16px;
+  }
+
+  .tabIndicator {
+    width: 5px;
+    height: 80%;
+  }
+
+  .tabPage {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}

@@ -1,0 +1,195 @@
+.mainAddButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #f8f9ff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #39913a;
+  font-weight: 600;
+  font-size: 26px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  transition: all ease 0.2s;
+}
+
+.tooltipText {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0px;
+  position: absolute;
+  top: 120%;
+  left: 10px;
+  font-size: 12px;
+  margin-left: -50%;
+  transition: all ease 0.2s;
+}
+
+.mainAddButton:hover {
+  filter: drop-shadow(1px 3px 10px rgba(128, 128, 128, 0.6));
+  transform: translateY(-3px);
+}
+
+.mainAddButton:hover .tooltipText {
+  visibility: visible;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(160, 160, 160, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 500px;
+  background-color: white;
+  padding: 20px 40px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.closeBtn {
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  text-align: center;
+  background-color: #96332f;
+  color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  cursor: pointer;
+  transition: all ease 0.2s;
+}
+
+.closeBtn:hover{
+  background-color: #da423c;
+}
+
+.title {
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 20px;
+  color: cadetblue;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 7px;
+  text-align: center;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.label {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.input {
+  border: 2px solid gray;
+  padding: 10px 20px;
+  border-radius: 5px;
+  outline: none;
+  resize: vertical;
+  transition: all ease 0.3s;
+}
+
+.input:focus {
+  border: 2px solid #5f9ea0;
+  background-color: aliceblue;
+}
+
+.selectFile[type=file]::file-selector-button {
+  padding: 5px;
+  border: 2px solid #5f9ea0;
+  border-radius: 5px;
+  background-color: white;
+  color: #5f9ea0;
+  cursor: pointer;
+}
+
+.selectFile[disabled]::file-selector-button {
+  padding: 5px;
+  border: 2px solid #658283;
+  border-radius: 5px;
+  background-color: white;
+  color: #658283;
+  cursor: not-allowed;
+}
+
+.priceContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputSm{
+  width: 25%;
+}
+
+.extraContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.extra {
+  position: relative;
+  width: 20%;
+}
+
+.extraContainer.category .extra.oat{
+  width: 25%;
+}
+
+.checkbox{
+  opacity: 0;
+}
+
+.extraLabel {
+  position: absolute;
+  left: 0;
+  padding: 3px 8px;
+  margin: 0 3px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all ease 0.2s;
+}
+
+.checkbox:checked + .extraLabel {
+  background-color: rgba(95, 158, 160, 0.7);
+  color: white;
+}
+
+.submitButton {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: darkcyan;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-end;
+}
