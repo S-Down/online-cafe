@@ -75,7 +75,8 @@ const Index = ({
 }
 
 export const getServerSideProps = async () => {
-  const productList = await axios.get('http://localhost:3000/api/products')
+  let url = process.env.NODE_ENV === 'development' ? process.env.BASE_URL : ''
+  const productList = await axios.get(`${url}/api/products`)
   return {
     props: {
       products_latte: productList.data.filter(product => product.category.includes('拿铁')),
