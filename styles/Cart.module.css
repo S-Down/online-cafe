@@ -1,0 +1,187 @@
+.container {
+    height: 80vh;
+    padding: 50px;
+    display: flex;
+}
+
+.left {
+    flex: 2;
+}
+
+.right {
+    flex: 1;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgContainer {
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.table {
+    width: 100%;
+    border-spacing: 20px;
+    text-align: center;
+}
+
+.name {
+    font-weight: 700;
+    color: #39913a;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.total {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.wrapper {
+    width: 90%;
+    max-height: 300px;
+    border-radius: 10px;
+    background-color: #1c531dbb;
+    color: white;
+    box-shadow: 0 4px 8px 0 #00000049, 0 6px 20px 0 #00000071;
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+    letter-spacing: 4px;
+    font-size: 24px;
+}
+
+.totalTextTitle {
+    margin-right: 10px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.button {
+    height: 30px;
+    color: #39913a;
+    background-color: white;
+    border: 2px solid #39913a;
+    border-radius: 8px;
+    margin-top: 20px;
+    letter-spacing: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.paymentMethods {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.payButton {
+    padding: 10px 5px;
+    margin-bottom: 10px;
+    background-color: white;
+    color: darkcyan;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.payButton:hover {
+    background-color: #eee;
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .table {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tbody tr {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .table tbody tr td {
+        margin-bottom: 10px;
+    }
+
+    .imgContainer {
+        width: 200px;
+        height: 150px;
+        margin-bottom: 20px;
+    }
+
+    .extras::before {
+        content: '额外信息: ';
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+
+    .price::before {
+        content: '单价: ';
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+
+    .quantity::before {
+        content: '数量: ';
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+
+    .total::before {
+        content: '总价: ';
+        font-weight: 600;
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+
+    .wrapper {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .title, .totalText {
+        padding: 0;
+        margin: 0;
+    }
+
+    .title {
+        margin-bottom: 16px;
+    }
+
+    .totalText {
+        margin-bottom: 10px;
+    }
+
+    .button {
+        margin-top: 10px;
+    }
+}

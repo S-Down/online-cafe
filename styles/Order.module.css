@@ -1,0 +1,195 @@
+.container {
+    min-height: 80vh;
+    padding: 50px;
+    display: flex;
+}
+
+.left {
+    flex: 2;
+}
+
+.table {
+    width: 100%;
+    text-align: center;
+    border-spacing: 20px;
+    margin-bottom: 50px;
+}
+
+.row:last-child {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.checkedIcon {
+    visibility: hidden;
+}
+
+.done {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.done > .checkedIcon {
+    visibility: visible;
+}
+
+.preparing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: inProgress 1.5s ease infinite alternate;
+}
+
+@keyframes inProgress {
+    from {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 0.8;
+        transform: scale(1.0);
+    }
+}
+
+.waiting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.3;
+}
+
+.statusTitle {
+    margin: 5px 0px;
+}
+
+.right {
+    flex: 1;
+}
+
+.wrapper {
+    width: 90%;
+    max-height: 300px;
+    border-radius: 10px;
+    background-color: #1c531dbb;
+    color: white;
+    box-shadow: 0 4px 8px 0 #00000049, 0 6px 20px 0 #00000071;
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+    letter-spacing: 4px;
+    font-size: 24px;
+}
+
+.totalTextTitle {
+    margin-right: 10px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.button {
+    background-color: white;
+    height: 30px;
+    color: teal;
+    font-weight: 600;
+    border: 2px solid teal;
+    border-radius: 8px;
+    letter-spacing: 4px;
+    font-weight: 600;
+    margin-top: 20px;
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .table {
+        margin-bottom: 20px;
+        border-spacing: 10px;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tbody tr {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .table tbody tr td {
+        margin-bottom: 10px;
+    }
+
+    .id::before {
+        content: '订单ID: ';
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+
+    .name::before {
+        content: '顾客: ';
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+
+    .phone::before {
+        content: '联系电话: ';
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+
+    .address::before {
+        content: '配送地址: ';
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+
+    .price::before {
+        content: '订单金额: ';
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+
+    .row:last-child {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .done, .preparing, .waiting {
+        transform: scale(0.9);
+    }
+
+    .wrapper {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .title, .totalText {
+        padding: 0;
+        margin: 0;
+    }
+
+    .title {
+        margin-bottom: 16px;
+    }
+
+    .totalText {
+        margin-bottom: 10px;
+    }
+
+    .button {
+        margin-top: 10px;
+    }
+}

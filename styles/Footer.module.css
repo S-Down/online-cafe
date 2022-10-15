@@ -1,0 +1,158 @@
+.container {
+    height: calc(50vh - 80px);
+    background-color: #061c04;
+    display: flex;
+}
+
+.item {
+    flex: 1;
+    position: relative;
+    display: flex;
+}
+
+.item:last-child {
+    flex: 3;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    padding: 0 20px;
+    flex: 1;
+}
+
+.card:first-child {
+    position: relative;
+    flex: 2;
+}
+
+.motto {
+    width: 100%;
+    margin-top: 30px;
+    color: #a4c5a4;
+    letter-spacing: 5px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.motto h2 {
+    margin-bottom: 20px;
+    padding: 0;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    text-shadow: 0 0 7px #a4c5a4;
+}
+
+.mottoBg {
+    width: 100%;
+    position: absolute;
+    top: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mottoBg h3 {
+    color: #ebe531;
+    padding: 0px;
+    margin: 0px;
+    font-style: oblique;
+    font-size: 18px;
+    font-weight: 300;
+    word-spacing: 4px;
+    letter-spacing: 3px;
+    word-wrap: break-word;
+    text-align: center;
+    text-shadow: 0 0 7px #ebe531, 0 0 14px white;
+}
+
+.mottoBg h3:first-child {
+    margin-bottom: 60px;
+}
+
+.title {
+    font-size: 18px;
+    color: #f0fff0;
+    margin-top: 30px;
+    letter-spacing: 3px;
+}
+
+.text {
+    color: #b0d4b0;
+    margin-bottom: 15px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+}
+
+.contactItem {
+    display: flex;
+    align-items: center;
+}
+
+.contactItem .text {
+    margin: 0;
+    padding: 0;
+}
+
+.contactItem:first-child {
+    margin-bottom: 16px;
+}
+
+.img {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        height: auto;
+        text-align: center;
+    }
+
+    .item:first-child {
+        display: none;
+    }
+
+    .item {
+        flex-direction: column;
+    }
+
+    .card {
+        padding: 0 40px;
+    }
+
+    .motto {
+        margin-top: 20px;
+    }
+
+    .title {
+        margin-top: 20px;
+    }
+
+    .card:first-child {
+        margin-bottom: 30px;
+    }
+
+    .card:last-child {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contactItem:last-child {
+        margin-bottom: 30px;
+    }
+}

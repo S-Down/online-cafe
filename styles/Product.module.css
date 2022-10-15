@@ -1,0 +1,179 @@
+.container {
+    height: calc(100vh - 80px);
+    display: flex;
+}
+
+.left {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right {
+    flex: 1;
+    position: relative;
+}
+
+.imgContainer {
+    width: 80%;
+    height: 80%;
+    position: relative;
+}
+
+.title {
+    letter-spacing: 4px;
+}
+
+.price {
+    color: #39913a;
+    font-size: 24px;
+    font-weight: 400;
+    text-decoration: underline double #39913a 2px;
+}
+
+.chooseTitle {
+    margin-top: 20px;
+    letter-spacing: 3px;
+}
+
+.choose {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 30px;
+}
+
+.option {
+    width: 90px;
+    height: 90px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all ease 0.5s;
+}
+
+.active {
+    border-radius: 10px;
+    background-color: #b9c8e14b;
+}
+
+.sizeTitle {
+    position: absolute;
+    bottom: -10px;
+    transform: translateX(50%);
+    color: white;
+    background-color: cadetblue;
+    font-size: 14px;
+    padding: 2px 10px;
+    border-radius: 10px;
+}
+
+.sweetnessTitle {
+    position: absolute;
+    bottom: -10px;
+    transform: translateX(50%);
+    color: white;
+    background-color: #a0865f;
+    font-size: 14px;
+    padding: 2px 10px;
+    border-radius: 10px;
+}
+
+.tempTitle {
+    position: absolute;
+    bottom: -10px;
+    transform: translateX(50%);
+    color: white;
+    background-color: #7ba2dc;
+    font-size: 14px;
+    padding: 2px 10px;
+    border-radius: 10px;
+}
+
+.add {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+}
+
+.quantity {
+    width: 60px;
+    height: 40px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.button {
+    height: 40px;
+    margin-left: 10px;
+    padding: 0px 8px;
+    background-color: #39913a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        height: auto;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .imgContainer {
+        width: 70vw;
+        height: 70vw;
+        margin-bottom: 10px;
+    }
+
+    .title {
+        font-size: 26px;
+        margin: 10px; 
+    }
+
+    .price {
+        font-size: 20px;
+    }
+
+    .desc {
+        font-size: 16px;
+        margin: 10px 30px;
+        text-align: left;
+    }
+
+    .chooseTitle {
+        margin: 10px 0;
+    }
+
+    .choose {
+        width: 100%;
+        padding: 0 20px;
+        margin-bottom: 20px;
+    }
+
+    .option {
+        transform: scale(0.9);
+    }
+
+    .add {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 20px;
+    }
+
+    .button {
+        padding: 0 10px;
+    }
+}

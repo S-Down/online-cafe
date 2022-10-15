@@ -1,0 +1,66 @@
+.container {
+  height: calc(100vh - 80px);
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.item {
+  flex: 1;
+  margin: 15px;
+  border-radius: 20px;
+  background-color: #f8f9ff;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.item:first-child {
+  position: relative;
+}
+
+.title {
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: 5px;
+}
+
+.table {
+  width: 100%;
+  border-spacing: 20px;
+  text-align: center;
+}
+
+.trTitle th{
+  font-weight: 600;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:first-child {
+  background-color: darkcyan;
+  margin-right: 10px;
+}
+
+.button:nth-child(2) {
+  background-color: firebrick;
+}
+
+.item ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.item ::-webkit-scrollbar-track {
+  background: #f3f3f3; 
+}
+
+.item ::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}

@@ -1,0 +1,91 @@
+.container {
+  width: 300px;
+  height: 400px;
+  background-color: #f1ffff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 20px;
+  margin-top: 30px;
+  text-align: center;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.15), -10px -10px 15px rgb(255 255 255);
+  cursor: pointer;
+  transition: all ease 0.7s;
+}
+
+.container:hover {
+  transform: translateY(-8px);
+}
+
+.img {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.info {
+  padding: 0 15px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #097878;
+  margin: 15px 0;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #5e9c9b;
+}
+
+.desc {
+  font-weight: 500;
+  margin: 15px 0;
+  color: #6f9292;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 240px;
+    height: 100px;
+    margin: 20px 0;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15), -5px -5px 10px rgba(255, 255, 255, 0.8);
+    flex-direction: row;
+  }
+
+  .img {
+    flex: 1;
+    width: 100px;
+    height: 100px;
+  }
+
+  .info {
+    flex: 1;
+  }
+
+  .title {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+
+  .price {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+
+  .price::after {
+    content: '点击图片查看更多信息';
+    display: block;
+    font-size: 12px;
+    color: #6f9292;
+    margin-top: 5px;
+  }
+
+  .desc {
+    display: none;
+  }
+
+}
