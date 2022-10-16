@@ -104,7 +104,7 @@ const Add = ({ setClose, setProductList, modify, setModify, item }) => {
         temp,
         category
       };
-      const product = await axios.post("http://localhost:3000/api/products", newProduct)
+      const product = await axios.post(`${process.env.BASE_URL}/api/products`, newProduct)
       setProductList(prev => [...prev, product.data])
       setClose(true)
       console.log(newProduct)
@@ -124,7 +124,7 @@ const Add = ({ setClose, setProductList, modify, setModify, item }) => {
         category
     }
     try {
-      const res = await axios.put('http://localhost:3000/api/products/' + item._id, newProduct)
+      const res = await axios.put(`${process.env.BASE_URL}/api/products/` + item._id, newProduct)
       setProductList(prev => [res.data, ...prev.filter(
         product => product._id !== item._id
       )])
