@@ -65,7 +65,7 @@ const Index = ({ products }) => {
 export default Index
 
 export const getServerSideProps = async () => {
-  const res = await axios.get("http://localhost:3000/api/products");
+  const res = await axios.get(`${process.env.BASE_URL}/api/products`);
   return {
     props: {
       products: res.data,

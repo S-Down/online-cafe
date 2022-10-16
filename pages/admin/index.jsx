@@ -18,7 +18,7 @@ const Index = ({ orders, products, admin }) => {
   const handleDelete = async (id) => {
     console.log(id)
     try {
-      const res = await axios.delete('http://localhost:3000/api/products/' + id)
+      const res = await axios.delete(`${process.env.BASE_URL}/api/products/` + id)
       setProductList(productList.filter(product => product._id !== id))
     } catch (error) {
       console.log(error)
@@ -29,7 +29,7 @@ const Index = ({ orders, products, admin }) => {
     console.log("order ", id)
     const item = orderList.find(order => order._id === id)
     try {
-      const res = await axios.put('http://localhost:3000/api/orders/' + id, { status: item.status + 1 })
+      const res = await axios.put(`${process.env.BASE_URL}/api/orders/` + id, { status: item.status + 1 })
       if(res.data.status < 3) {
         setOrderList([
           res.data,
@@ -143,8 +143,8 @@ export const getServerSideProps = async (ctx) => {
   }
   admin = true;
 
-  const productList = await axios.get('http://localhost:3000/api/products')
-  const orderList = await axios.get('http://localhost:3000/api/orders')
+  const productList = await axios.get(`${process.env.BASE_URL}/api/products`)
+  const orderList = await axios.get(`${process.env.BASE_URL}/api/orders`)
   return {
     props: {
       orders: orderList.data.filter(order => order.status < 3),
