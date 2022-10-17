@@ -390,6 +390,7 @@
 
 .validationBox .listIcon {
   margin-right: 7px;
+  height: 1em;
 }
 
 @media screen and (max-width: 480px) {

@@ -59,7 +59,6 @@ const SignInForm = ({ role, setIsSignUp, signIn, error, setError, setAuthError }
     router.prefetch('/history')
     verifyEmail.current.style.visibility = 'visible'
     verifyPwd.current.style.visibility = 'visible'
-    console.log(verifyEmail.current.style.visibility)
   }, [])
 
   const handleShowPwd = () => {
@@ -106,7 +105,6 @@ const SignInForm = ({ role, setIsSignUp, signIn, error, setError, setAuthError }
           password: adminData.password,
           redirect: false
         })
-        console.log('admin sign in result: ', result)
         if(!result.ok) {
           setAuthError({ status: true, message: result.error })
         } else {
@@ -119,7 +117,6 @@ const SignInForm = ({ role, setIsSignUp, signIn, error, setError, setAuthError }
           password: userData.password,
           redirect: false
         })
-        console.log('customer sign in result: ', result)
         if(!result.ok) {
           setAuthError({ status: true, message: result.error })
         } else {
