@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styles from '../styles/Add.module.css'
 import axios from 'axios'
 
-const Add = ({ setClose, setProductList, modify, setModify, item }) => {
+const Add = ({ setClose, setProductList, modify, setModify, item, base_url }) => {
   const [file, setFile] = useState(null)
   const [name, setName] = useState(modify ? item.name : null)
   const [desc, setDesc] = useState(modify ? item.desc : null)
@@ -104,10 +104,9 @@ const Add = ({ setClose, setProductList, modify, setModify, item }) => {
         temp,
         category
       };
-      const product = await axios.post(`${process.env.BASE_URL}/api/products`, newProduct)
+      const product = await axios.post(`${base_url}/api/products`, newProduct)
       setProductList(prev => [...prev, product.data])
       setClose(true)
-      console.log(newProduct)
     } catch (error) {
       console.log(error)
     }
@@ -124,11 +123,10 @@ const Add = ({ setClose, setProductList, modify, setModify, item }) => {
         category
     }
     try {
-      const res = await axios.put(`${process.env.BASE_URL}/api/products/` + item._id, newProduct)
+      const res = await axios.put(`${base_url}/api/products/` + item._id, newProduct)
       setProductList(prev => [res.data, ...prev.filter(
         product => product._id !== item._id
       )])
-      console.log("new product", res.data)
     } catch (error) {
       console.log(error)
     }
