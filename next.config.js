@@ -23,4 +23,12 @@ module.exports = {
       },
     ];
   },
+  axios: {
+    BASE_URL: "http://localhost:3000",
+  },
+  publicRuntimeConfig: {
+    axios: {
+      BASE_URL: process.env.BASE_URL,
+    },
+  },
 };

@@ -4,7 +4,7 @@ import { signIn, signOut } from 'next-auth/react'
 import SignInForm from '../../components/SignInForm'
 import SignUpForm from '../../components/SignUpForm'
 
-const Index = () => {
+const Index = ({ base_url }) => {
   const [role, setRole] = useState('customer')
   const [error, setError] = useState({
     status: false,
@@ -53,7 +53,7 @@ const Index = () => {
           <h3 name='admin' className={`${styles.tab} ${role === 'admin' ? styles.active : ''}`} onClick={e => handleTabToggle(e)}>管理员</h3>
         </div>
         <div className={styles.tabPage}>
-          {isSignUp && <SignUpForm setIsSignUp={setIsSignUp} error={error} setError={setError} setAuthError={setAuthError} />}
+          {isSignUp && <SignUpForm setIsSignUp={setIsSignUp} error={error} setError={setError} setAuthError={setAuthError} base_url={base_url} />}
           {!isSignUp && <>
             <SignInForm role={role} setIsSignUp={setIsSignUp} signIn={signIn} error={error} setError={setError} setAuthError={setAuthError} />
           </>}
@@ -86,3 +86,12 @@ const Index = () => {
 }
 
 export default Index
+
+export const getServerSideProps = async () => {
+  const base_url = process.env.BASE_URL
+  return {
+    props: {
+      base_url: base_url
+    }
+  }
+}

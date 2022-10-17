@@ -7,7 +7,7 @@ import AddButton from "../../components/AddButton";
 import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router'
 
-const Index = ({ orders, products, admin }) => {
+const Index = ({ orders, products, admin, base_url }) => {
   const [productList, setProductList] = useState(products)
   const [orderList, setOrderList] = useState(orders)
   const [close, setClose] = useState(true)
@@ -16,9 +16,8 @@ const Index = ({ orders, products, admin }) => {
   const router = useRouter()
 
   const handleDelete = async (id) => {
-    console.log(id)
     try {
-      const res = await axios.delete(`${process.env.BASE_URL}/api/products/` + id)
+      const res = await axios.delete(`${base_url}/api/products/` + id)
       setProductList(productList.filter(product => product._id !== id))
     } catch (error) {
       console.log(error)
@@ -26,10 +25,9 @@ const Index = ({ orders, products, admin }) => {
   }
 
   const handleStatus = async (id) => {
-    console.log("order ", id)
     const item = orderList.find(order => order._id === id)
     try {
-      const res = await axios.put(`${process.env.BASE_URL}/api/orders/` + id, { status: item.status + 1 })
+      const res = await axios.put(`${base_url}/api/orders/` + id, { status: item.status + 1 })
       if(res.data.status < 3) {
         setOrderList([
           res.data,
@@ -53,7 +51,7 @@ const Index = ({ orders, products, admin }) => {
     <div className={styles.container}>
       <div className={styles.item}>
         {admin && <AddButton setClose={setClose} />}
-        {!close && <Add setClose={setClose} setProductList={setProductList} modify={modify} setModify={setModify} item={item} />}
+        {!close && <Add setClose={setClose} setProductList={setProductList} modify={modify} setModify={setModify} item={item} base_url={base_url} />}
         <h1 className={styles.title}>产品</h1>
         <table className={styles.table}>
           <thead>
@@ -131,6 +129,7 @@ const Index = ({ orders, products, admin }) => {
 
 export const getServerSideProps = async (ctx) => {
   const session = await getSession({ req: ctx.req })
+  const base_url = process.env.BASE_URL
   let admin = false;
 
   if(!session) {
@@ -143,13 +142,14 @@ export const getServerSideProps = async (ctx) => {
   }
   admin = true;
 
-  const productList = await axios.get(`${process.env.BASE_URL}/api/products`)
-  const orderList = await axios.get(`${process.env.BASE_URL}/api/orders`)
+  const productList = await axios.get(`${base_url}/api/products`)
+  const orderList = await axios.get(`${base_url}/api/orders`)
   return {
     props: {
       orders: orderList.data.filter(order => order.status < 3),
       products: productList.data,
-      admin: admin
+      admin: admin,
+      base_url: base_url
     }
   }
 }

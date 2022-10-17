@@ -5,7 +5,7 @@ import { faEye, faEyeSlash, faCircleDot } from '@fortawesome/free-solid-svg-icon
 import { debounce } from '../lib/helpers'
 import axios from 'axios'
 
-const SignUpForm = ({ setIsSignUp, error, setError, setAuthError }) => {
+const SignUpForm = ({ setIsSignUp, error, setError, setAuthError, base_url }) => {
   const name = useRef()
   const email = useRef()
   const pwd = useRef()
@@ -85,10 +85,9 @@ const SignUpForm = ({ setIsSignUp, error, setError, setAuthError }) => {
         password: userData.password
       }
       try {
-        const res = await axios.post(`${process.env.BASE_URL}/api/auth/signup`, user)
+        console.log('base url from server side: ', base_url)
+        const res = await axios.post(`${base_url}/api/auth/signup`, user)
         const newUser = res.data
-        console.log('user: ', user)
-        console.log('newUser: ', newUser)
         setError({
           ...error,
           message: `${newUser.msg}, 请返回登录界面进行登录`
