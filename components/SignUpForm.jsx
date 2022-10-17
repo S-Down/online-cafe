@@ -85,7 +85,7 @@ const SignUpForm = ({ setIsSignUp, error, setError, setAuthError }) => {
         password: userData.password
       }
       try {
-        const res = await axios.post(`/api/auth/signup`, user)
+        const res = await axios.post(`${process.env.BASE_URL}/api/auth/signup`, user)
         const newUser = res.data
         console.log('user: ', user)
         console.log('newUser: ', newUser)
