@@ -4,7 +4,6 @@ import Image from 'next/image'
 
 const MenuList = ({productList, category}) => {
   const hasProduct = productList.length > 0
-  console.log(hasProduct)
   return (
     <>
       {hasProduct && productList.map(
