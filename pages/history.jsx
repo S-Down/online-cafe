@@ -2,7 +2,9 @@ import styles from '../styles/History.module.css'
 
 const History = () => {
   return (
-    <div className={styles.container}>History Orders Page</div>
+    <div className={styles.container}>
+      <h3> historical orders : </h3>
+    </div>
   )
 }
 
