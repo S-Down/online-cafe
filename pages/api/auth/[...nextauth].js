@@ -60,6 +60,7 @@ export const authOptions = {
           if (!checkPassword) {
             throw new Error("所输入密码不正确");
           }
+          console.log(user.name);
           return {
             name: user.name,
             email: user.email,
