@@ -1,21 +1,18 @@
 import styles from '../../styles/Product.module.css'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import axios from 'axios'
-import { useDispatch } from 'react-redux'
-import { addProduct } from  '../../redux/cartSlice'
+import { getSession } from 'next-auth/react';
 
-const Product = ({ product }) => {
+const Product = ({ product, base_url, user }) => {
   const tastes = product.tastes.filter(taste => taste !== null)
   const temps = product.temp.filter(t => t !== null)
-  
+
   const [size, setSize] = useState(0)
   const [sweetness, setSweetness] = useState(0)
   const [temperature, setTemperature] = useState(0)
   const [extras, setExtras] = useState(['小份', tastes[0].text, temps[0].text])
   const [quantity, setQuantity] = useState(1)
-  const dispatch = useDispatch()
-
 
   const handleOptionChange = (e, index, type) => {
     const info = e.currentTarget.lastChild.innerHTML
@@ -31,9 +28,28 @@ const Product = ({ product }) => {
     }
   }
 
-  const handleAddClick = () => {
-    const price = product.price[size]
-    dispatch(addProduct({...product, extras, price, quantity}))
+  const handleAddClick = async () => {
+    if(user.role === 'customer') {
+      const price = product.price[size]
+      const newItem = {
+        img: product.img,
+        name: product.name,
+        category: product.category,
+        extras: extras.join(' '), 
+        price: price,
+        quantity: quantity
+        }
+      try {
+        const cart = await axios.get(`${base_url}/api/cart/${user.cart}`)
+        const products = cart.data.products
+        const counts = cart.data.counts
+        const newCart = await axios.put(`${base_url}/api/cart/${user.cart}`, { products: [...products, newItem], counts: counts + 1 })
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      alert('仅支持登录后的顾客进行产品加购')
+    }
   }
 
   return (
@@ -88,11 +104,25 @@ const Product = ({ product }) => {
   )
 }
 
-export const getServerSideProps = async ({ params }) => {
-  const res = await axios.get(`${process.env.BASE_URL}/api/products/${params.id}`);
+export const getServerSideProps = async (ctx) => {
+  const session = await getSession({ req: ctx.req })
+  if(!session) {
+    return{
+      redirect: {
+        destination: "/auth",
+        permanent: false,
+      }
+    }
+  }
+
+  const user = session.user
+  const base_url = process.env.BASE_URL
+  const res = await axios.get(`${base_url}/api/products/${ctx.params.id}`);
   return {
     props: {
       product: res.data,
+      base_url: base_url,
+      user: user
     },
   };
 };

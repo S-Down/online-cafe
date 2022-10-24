@@ -40,7 +40,7 @@ const Order = ({ order }) => {
                   <span className={styles.address}>{order.address}</span>
                 </td>
                 <td>
-                  <span className={styles.price}>￥ {order.total}</span>
+                  <span className={styles.price}>￥ {order.total - order.discount}</span>
                 </td>
               </tr>
             </tbody>
@@ -81,13 +81,13 @@ const Order = ({ order }) => {
         <div className={styles.wrapper}>
           <h3 className={styles.title}>订单总计</h3>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>小计: </b>￥ {order.total}
+            <b className={styles.totalTextTitle}>小计: </b>￥ {(order.total).toFixed(2)}
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>优惠: </b>￥ 0.00
+            <b className={styles.totalTextTitle}>优惠: </b>￥ {(order.discount).toFixed(2)}
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>合计: </b>￥ {order.total}
+            <b className={styles.totalTextTitle}>合计: </b>￥ {(order.total - order.discount).toFixed(2)}
           </div>
           <button disabled className={styles.button}>已支付</button>
         </div>

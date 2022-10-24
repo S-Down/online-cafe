@@ -5,7 +5,6 @@ import { useState } from 'react'
 import Add from "../../components/Add";
 import AddButton from "../../components/AddButton";
 import { getSession } from 'next-auth/react';
-import { useRouter } from 'next/router'
 
 const Index = ({ orders, products, admin, base_url }) => {
   const [productList, setProductList] = useState(products)
@@ -13,7 +12,6 @@ const Index = ({ orders, products, admin, base_url }) => {
   const [close, setClose] = useState(true)
   const [modify, setModify] = useState(false)
   const [item, setItem] = useState(null)
-  const router = useRouter()
 
   const handleDelete = async (id) => {
     try {
@@ -131,7 +129,7 @@ export const getServerSideProps = async (ctx) => {
   const session = await getSession({ req: ctx.req })
   const base_url = process.env.BASE_URL
   let admin = false;
-
+  
   if(!session) {
     return{
       redirect: {
