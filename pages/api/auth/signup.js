@@ -1,4 +1,5 @@
 import User from "../../../models/User";
+import Cart from "../../../models/Cart";
 import dbConnect from "../../../lib/mongo";
 import { hashPassword } from "../../../lib/authHelpers";
 import NextCors from "nextjs-cors";
@@ -27,7 +28,18 @@ const handler = async (req, res) => {
           email,
           password: await hashPassword(password, 12),
         });
-        res.status(201).json({ msg: "新用户创建成功", user });
+        // create cart for the new user
+        const cart = await Cart.create({
+          user: user.email,
+        });
+        console.log("cart: ", cart);
+        const newUser = await User.findByIdAndUpdate(
+          user._id,
+          { cart: cart._id },
+          { new: true }
+        );
+        console.log("newUser: ", newUser);
+        res.status(200).json({ msg: "新用户创建成功", newUser });
       }
     } catch (error) {
       console.log(error);

@@ -7,6 +7,11 @@ const OrderSchema = new mongoose.Schema(
       required: true,
       maxlength: 60,
     },
+    buyer: {
+      type: String,
+      required: true,
+      maxlength: 60,
+    },
     address: {
       type: String,
       required: true,
@@ -18,6 +23,28 @@ const OrderSchema = new mongoose.Schema(
     total: {
       type: Number,
       required: true,
+    },
+    discount: {
+      type: Number,
+      required: true,
+    },
+    products: {
+      type: [
+        {
+          name: {
+            type: String,
+          },
+          extras: {
+            type: String,
+          },
+          price: {
+            type: Number,
+          },
+          quantity: {
+            type: Number,
+          },
+        },
+      ],
     },
     status: {
       type: Number,

@@ -1,7 +1,6 @@
 import styles from '../styles/Navbar.module.css'
 import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
-import { useSelector } from 'react-redux'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import SignOutButton from './SignOutButton'
@@ -9,7 +8,6 @@ import SignOutButton from './SignOutButton'
 const Navbar = () => {
   const { data: session } = useSession()
   const [open, setOpen] = useState(false)
-  const quantity = useSelector(state => state.cart.quantity)
   const icons = useRef()
 
   useEffect(() => {
@@ -85,10 +83,9 @@ const Navbar = () => {
         <div className={styles.item} ref={icons}>
           {session && session.user.role === 'customer' && (
             <>
-              <Link href='/cart' passHref>
+              <Link href={`/cart/${session.user.cart}`} passHref>
                 <div className={styles.icon}>
                   <Image src="/img/cart.png" alt="the cart icon" layout='fill' />
-                  <div className={styles.counter}>{quantity}</div>
                 </div>
               </Link>
               <Link href='/history' passHref>
