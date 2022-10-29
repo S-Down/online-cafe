@@ -1,5 +1,6 @@
 import styles from '../../styles/Order.module.css'
 import Image from 'next/image'
+import Head from 'next/head'
 import axios from 'axios'
 
 const Order = ({ order }) => {
@@ -13,6 +14,13 @@ const Order = ({ order }) => {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>订单详情</title>
+        <meta 
+          name='description'
+          content='订单详情页面, 顾客可在此页面查看特定订单的选购信息, 以及该订单当前所处的状态'
+        />
+      </Head>
       <div className={styles.left}>
         <div className={styles.row}>
           <table className={styles.table}>

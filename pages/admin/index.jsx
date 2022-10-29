@@ -1,5 +1,6 @@
 import styles from '../../styles/Admin.module.css'
 import Image from 'next/image'
+import Head from 'next/head'
 import axios from 'axios'
 import { useState } from 'react'
 import Add from "../../components/Add";
@@ -47,6 +48,13 @@ const Index = ({ orders, products, admin, base_url }) => {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>管理员操作中心</title>
+        <meta 
+          name='description'
+          content='管理员操作中心, 店铺管理员可在此页面浏览已有的产品和待处理的订单, 并对其进行相关管理操作'
+        />
+      </Head>
       <div className={styles.item}>
         {admin && <AddButton setClose={setClose} />}
         {!close && <Add setClose={setClose} setProductList={setProductList} modify={modify} setModify={setModify} item={item} base_url={base_url} />}

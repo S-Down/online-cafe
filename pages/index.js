@@ -8,10 +8,10 @@ export default function Home({ productList }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Order Coffee Online</title>
+        <title>臻享咖啡</title>
         <meta
           name="description"
-          content="Order a cup of coffee or other drinks for yourself"
+          content="动动手指点一杯咖啡, 甘苦相伴品味生活滋味"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

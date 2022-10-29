@@ -1,6 +1,7 @@
 import styles from '../../styles/Activities.module.css'
 import ActivityCard from '../../components/ActivityCard'
 import Image from 'next/image'
+import Head from 'next/head'
 import axios from 'axios'
 import ActivityDetails from '../../components/ActivityDetails'
 import { useState } from 'react'
@@ -48,6 +49,13 @@ const Index = ({ products }) => {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>特惠活动</title>
+        <meta 
+          name='description'
+          content='特惠活动页面, 顾客可在此页面浏览查看特惠活动, 选购活动范围内的产品'
+        />
+      </Head>
       {!close && <ActivityDetails discount={activity.discount} bg={activity.bg} setClose={setClose} />}
       {activities.map((activity, index) => (
         <ActivityCard activity={activity} setActivity={setActivity} setClose={setClose} key={index} />
