@@ -169,5 +169,33 @@
   .wrapper {
     columns: 1;
   }
+
+  .receipt {
+    font-size: 16px;
+  }
+
+  .idNumber {
+    font-size: 14px;
+  }
+
+  .name {
+    font-size: 15px;
+  }
+
+  .extras {
+    font-size: 12px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+
+  .quantity {
+    font-size: 14px;
+  }
+
+  .infoText {
+    font-size: 14px;
+  }
 }
 
