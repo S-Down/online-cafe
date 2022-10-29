@@ -46,10 +46,6 @@ const handler = async (req, res) => {
       res.status(500).json(error);
     }
   }
-
-  // if (method === "OPTIONS") {
-  //   return res.status(200).send("ok");
-  // }
 };
 
 export default handler;

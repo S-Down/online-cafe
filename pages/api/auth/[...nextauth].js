@@ -4,7 +4,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { clientPromise } from "../../../lib/mongo";
 import dbConnect from "../../../lib/mongo";
 import User from "../../../models/User";
-import Cart from "../../../models/Cart";
 import { verifyPassword } from "../../../lib/authHelpers";
 
 export const authOptions = {

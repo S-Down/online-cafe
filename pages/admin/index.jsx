@@ -130,7 +130,7 @@ export const getServerSideProps = async (ctx) => {
   const base_url = process.env.BASE_URL
   let admin = false;
   
-  if(!session) {
+  if(!session || session.user.role !== 'admin') {
     return{
       redirect: {
         destination: "/auth",

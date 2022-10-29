@@ -2,7 +2,7 @@ import styles from '../../styles/Cart.module.css'
 import { debounce } from '../../lib/helpers'
 import { initialDiscounts, discountReducer, initialCheckoutInfos, checkoutReducer } from '../../lib/reducerHelpers';
 import OrderDetails from '../../components/OrderDetails'
-import { getSession } from 'next-auth/react';
+import { getSession } from 'next-auth/react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useState, useReducer, useEffect, useRef } from "react"
@@ -48,34 +48,32 @@ const Cart = ({ base_url, user, cart }) => {
             total: tempTotal,
             reduce: tempReduce
           })
-        } else if(discount.id === 2) {
-          if(discount.id === 2) { // calculate for oat's discount
-            if(discount.quantity === 1) {
-              tempReduce = tempTotal * 0.1
-            } else if(discount.quantity === 2) {
-              tempReduce = tempTotal * 0.15
-            } else if(discount.quantity >= 3) {
-              tempReduce = tempTotal * 0.2
-            }
-            tempTotal = tempTotal.toFixed(2)
-            tempReduce = tempReduce.toFixed(2)
-            checkoutInfoDispatch({
-              type: "UPDATE",
-              id: 2,
-              total: tempTotal,
-              reduce: tempReduce
-            })
-          } else if(discount.id === 3) { // calculate for non discount
-              tempTotal = tempTotal.toFixed(2)
-              tempReduce = tempReduce.toFixed(2)
-              checkoutInfoDispatch({
-                type: "UPDATE",
-                id: 3,
-                total: tempTotal,
-                reduce: tempReduce
-              })
+        } else if(discount.id === 2) { // calculate for oat's discount
+          if(discount.quantity === 1) {
+            tempReduce = tempTotal * 0.1
+          } else if(discount.quantity === 2) {
+            tempReduce = tempTotal * 0.15
+          } else if(discount.quantity >= 3) {
+            tempReduce = tempTotal * 0.2
           }
-        }
+          tempTotal = tempTotal.toFixed(2)
+          tempReduce = tempReduce.toFixed(2)
+          checkoutInfoDispatch({
+            type: "UPDATE",
+            id: 2,
+            total: tempTotal,
+            reduce: tempReduce
+          })
+        } else if(discount.id === 3) { // calculate for non discount
+          tempTotal = tempTotal.toFixed(2)
+          tempReduce = tempReduce.toFixed(2)
+          checkoutInfoDispatch({
+            type: "UPDATE",
+            id: 3,
+            total: tempTotal,
+            reduce: tempReduce
+          })
+        }  
       } else {
         checkoutInfoDispatch({
           type: "UPDATE",
@@ -217,7 +215,7 @@ const Cart = ({ base_url, user, cart }) => {
                     享{checkoutInfos[1].info}优惠,共减免{checkoutInfos[1].reduce}元
                   </p>
                   <p className={styles.detailsText}>
-                    所勾选饮品中{discounts[0].quantity}杯{checkoutInfos[2].title},
+                    所勾选饮品中{discounts[2].quantity}杯{checkoutInfos[2].title},
                     {checkoutInfos[2].info}
                   </p>
                   <button className={styles.detailsCloseBtn} onClick={() => setDetailsOpen(false)}>收起详细信息</button>
@@ -282,7 +280,7 @@ export default Cart
 
 export const getServerSideProps = async (ctx) => {
   const session = await getSession({ req: ctx.req })
-  if(!session) {
+  if(!session || session.user.role !== 'customer') {
     return{
       redirect: {
         destination: "/auth",

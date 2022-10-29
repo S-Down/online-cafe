@@ -2,13 +2,13 @@ import dbConnect from "../../../lib/mongo";
 import Order from "../../../models/Order";
 
 const handler = async (req, res) => {
-  const { method } = req;
+  const { method, query } = req;
 
   await dbConnect();
 
   if (method === "GET") {
     try {
-      const orders = await Order.find();
+      const orders = await Order.find(query);
       res.status(200).json(orders);
     } catch (error) {
       res.status(500).json(error);
