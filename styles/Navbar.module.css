@@ -41,6 +41,7 @@
     letter-spacing: 7px;
     color: #39913a;
     display: block;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
