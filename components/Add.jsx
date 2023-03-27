@@ -293,7 +293,7 @@ const Add = ({ setClose, setProductList, modify, setModify, item, base_url }) =>
                 id="oat"
                 name="燕麦制作"
                 className={styles.checkbox}
-                checked={ modify && category.includes('燕麦制作') }
+                defaultChecked={ modify && category.includes('燕麦制作') }
                 onChange={(e) => changeCategory(e)}
               />
               <label htmlFor="oat" className={styles.extraLabel}>燕麦制作</label>

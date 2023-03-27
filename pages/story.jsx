@@ -1,10 +1,18 @@
 import styles from '../styles/Story.module.css'
 import Image from 'next/image'
+import Head from 'next/head'
 import { Parallax } from 'react-scroll-parallax'
 
 const Story = () => {
   return (
     <div className={styles.container}>
+      <Head>
+        <title>品牌故事</title>
+        <meta 
+          name='description'
+          content='品牌故事页面, 顾客可在此页面浏览查看品牌故事, 了解品牌文化'
+        />
+      </Head>
       <div className={styles.wrapper}>
         <Parallax  className={styles.title} translateX={[100, -60]}>
           <h2>严选优质咖啡豆 专业化工艺获取至臻原料</h2>

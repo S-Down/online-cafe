@@ -4,7 +4,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { clientPromise } from "../../../lib/mongo";
 import dbConnect from "../../../lib/mongo";
 import User from "../../../models/User";
-import Cart from "../../../models/Cart";
 import { verifyPassword } from "../../../lib/authHelpers";
 
 export const authOptions = {
@@ -60,6 +59,7 @@ export const authOptions = {
           if (!checkPassword) {
             throw new Error("所输入密码不正确");
           }
+          console.log(user.name);
           return {
             name: user.name,
             email: user.email,

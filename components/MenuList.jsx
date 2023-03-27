@@ -6,9 +6,12 @@ const MenuList = ({productList, category}) => {
   const hasProduct = productList.length > 0
   return (
     <>
-      {hasProduct && productList.map(
-        product => (<MenuItemCard product={product} key={product._id}/>)
-      )}
+      {hasProduct && 
+      (<div className={styles.productsWrapper}>
+        {productList.map(
+          product => (<MenuItemCard product={product} key={product._id}/>)
+        )}
+      </div>)}
       {!hasProduct && 
         (<div className={styles.container}>
           <p className={styles.info}>抱歉, 本店暂未上架<span className={styles.category}>{category}</span>相关的产品, 请您之后再进行选购</p>

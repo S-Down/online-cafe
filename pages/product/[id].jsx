@@ -1,6 +1,7 @@
 import styles from '../../styles/Product.module.css'
 import Image from 'next/image'
-import { useState, useContext } from 'react'
+import Head from 'next/head'
+import { useState } from 'react'
 import axios from 'axios'
 import { getSession } from 'next-auth/react';
 
@@ -54,6 +55,13 @@ const Product = ({ product, base_url, user }) => {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>产品 - {product.name}</title>
+        <meta 
+          name='description'
+          content='产品详情页面, 顾客可在此页面查看产品的详细信息, 调整至自己想要的口味并进行选购'
+        />
+      </Head>
       <div className={styles.left}>
         <div className={styles.imgContainer}>
           <Image src={product.img} alt="产品的实物图片" layout="fill" objectFit="cover" style={{borderRadius: '10px'}}/>

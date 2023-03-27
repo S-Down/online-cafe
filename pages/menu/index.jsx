@@ -1,6 +1,7 @@
 import styles from '../../styles/Menu.module.css'
 import { useState } from 'react'
 import axios from "axios";
+import Head from 'next/head'
 import MenuList from '../../components/MenuList';
 
 const Index = ({
@@ -17,6 +18,13 @@ const Index = ({
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>菜单</title>
+        <meta 
+          name='description'
+          content='菜单页面, 顾客可在此页面按类别浏览店内已上架产品并进行选购'
+        />
+      </Head>
       <div className={styles.tabBar}>
         <div
           className={styles.tab}

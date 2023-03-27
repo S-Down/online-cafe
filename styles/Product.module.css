@@ -33,6 +33,10 @@
     text-decoration: underline double #39913a 2px;
 }
 
+.desc {
+    padding-right: 60px;
+}
+
 .chooseTitle {
     margin-top: 20px;
     letter-spacing: 3px;
@@ -149,6 +153,7 @@
     .desc {
         font-size: 16px;
         margin: 10px 30px;
+        padding: 0;
         text-align: left;
     }
 
